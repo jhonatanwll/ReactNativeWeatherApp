@@ -4,14 +4,14 @@ import { NavigationContainer } from '@react-navigation/native';
 import Tabs from './src/components/Tabs';
 
 const App = () => {
-    const [ loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(true)
     const [location, setLocation] = useState(null)
     const [error, setError] = useState(null)
-    
+
     useEffect(() => {
-        (async() =>{
-            let {status} = await Location.requestForegroundPermissionsAsync()
-            if (status !== 'granted'){
+        (async () => {
+            let { status } = await Location.requestForegroundPermissionsAsync()
+            if (status !== 'granted') {
                 setError('permisson to access location was denied')
                 return
             }
@@ -19,21 +19,20 @@ const App = () => {
             setLocation(location)
         })()
     }, [])
+    if (loading) {
+        return (
+            <View style={styles.container}>
+                <ActivityIndicator size={'large'} color={'blue'} />
+            </View>
+        )
+    }
     return (
         <NavigationContainer>
 
             <Tabs />
         </NavigationContainer>
     );
-};
-
-    if (loading) {
-        return(
-            <View style={styles.container}> 
-                <ActivityIndicator size={'large'} color={'blue'} />
-            </View>
-        )
-    }
+}
 
 const styles = StyleSheet.create({
     container: {
