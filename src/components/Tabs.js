@@ -11,15 +11,12 @@ const Tabs = () => {
     return (
         <Tab.Navigator
             screenOptions={{
-                tabBarAcctiveTintColor: 'tomato',
+                tabBarAcctiveTintColor: 'red',
                 tabBarInactiveTintColor: 'grey',
                 tabBarStyle: {
                     backgroundColor: 'lightblue',
                 },
                 headerStyle: {
-                    fontWeight: 'bold',
-                    fontSize: 5,
-                    color: 'tomato',
                 }
             }}
 
@@ -29,7 +26,7 @@ const Tabs = () => {
                     <Feather
                         name={'droplet'}
                         size={25}
-                        color={focused ? 'tomato' : 'black'}
+                        color={focused ? 'red' : 'black'}
                     />
                 )
             }}
@@ -39,7 +36,7 @@ const Tabs = () => {
                     <Feather
                         name={'clock'}
                         size={25}
-                        color={focused ? 'tomato' : 'black'}
+                        color={focused ? 'red' : 'black'}
                     />
                 )
             }}
@@ -49,7 +46,7 @@ const Tabs = () => {
                     <Feather
                         name={'home'}
                         size={25}
-                        color={focused ? 'tomato' : 'black'}
+                        color={focused ? 'red' : 'black'}
                     />
                 )
             }}
