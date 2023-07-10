@@ -10,8 +10,16 @@ import { useGetWeather } from './src/hooks/useGetWeather';
 // api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
 
 const App = () => {
-    const [loading, error,  weather] = useGetWeather()
-    console.log(loading,  error, weather)
+    const [loading, error, weather] = useGetWeather()
+    //console.log(loading, error, weather)
+
+    if (weather && weather.list) {
+        return (
+            <NavigationContainer>
+                <Tabs weather={weather} />
+            </NavigationContainer>
+        )
+    }   
 
     if (loading) {
         return (
@@ -20,12 +28,6 @@ const App = () => {
             </View>
         )
     }
-    return (
-        <NavigationContainer>
-
-            <Tabs />
-        </NavigationContainer>
-    );
 }
 
 const styles = StyleSheet.create({

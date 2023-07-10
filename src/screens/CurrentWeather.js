@@ -4,11 +4,11 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import RowText from '../components/RowText';
 import { weatherType } from '../utilities/weatherType';
 
-const CurrentWeather = () => {
+const CurrentWeather = ({ weatherData }) => {
     const {
         wrapper,
         container,
-        temp,
+        tempStyles,
         feels,
         highLowWrapper,
         highLow,
@@ -16,12 +16,18 @@ const CurrentWeather = () => {
         description,
         message,
     } = styles
+
+    const {
+        main: { temp, feels_like, temp_max, temp_min }, weather
+    } = weatherData
+
+    const weatherCondition = weather[0].main
     return (
-        <SafeAreaView style={wrapper}>
+        <SafeAreaView style={[wrapper, {backgroundColor: weatherType[weatherCondition].backgroundColor}]}>
             <View style={container}>
                 <FontAwesome5 name="sun" size={100} color="black" />
                 <Text>Current Weather</Text>
-                <Text style={temp}>6 </Text>
+                <Text style={tempStyles}>6 </Text>
                 <Text style={feels}>Feels like 5</Text>
                 <RowText
                     messageOne={'High: 8'}
@@ -35,7 +41,7 @@ const CurrentWeather = () => {
                 messageTwo={weatherType['Thunderstorm'].message}
                 containerStyles={bodyWrapper}
                 messageOneStyles={description}
-                messageTwoStyles={message}/>
+                messageTwoStyles={message} />
         </SafeAreaView>
     );
 };
@@ -50,7 +56,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'pink',
         flex: 1,
     },
-    temp: {
+    tempStyles: {
         color: 'black',
         fontSize: 48
     },
