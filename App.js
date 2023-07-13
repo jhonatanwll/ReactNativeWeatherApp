@@ -15,7 +15,6 @@ const App = () => {
     const [loading, error, weather] = useGetWeather()
     //console.log(loading, error, weather)
 
-/*
     if (weather && weather.list && !loading) {
         return (
             <NavigationContainer>
@@ -23,10 +22,8 @@ const App = () => {
             </NavigationContainer>
         )
     }
-*/
     return (
         <View style={styles.container}>
-        <OurButton  />    
             {error ? (
                 <ErrorItem />
             ) : (
